@@ -95,9 +95,10 @@ public class Boid : MonoBehaviour
         {
             for (int i = 0; i < neighbors.Count; i++)
                 separationDir += transform.position - neighbors[i].transform.position;
+            
+            separationDir /= neighbors.Count;
+            separationDir.Normalize();
         }
-
-        separationDir.Normalize();
         
         return separationDir;
     }
