@@ -34,7 +34,7 @@ public class Bullet : MonoBehaviour
             Vector3 dir = transform.forward + targetDir;
             dir.Normalize();
 
-            float t = 1f;
+            float t = 0.1f;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), t);
             //transform.rotation = Quaternion.LookRotation(dir);
             yield return new WaitForSeconds(duration);
