@@ -27,7 +27,6 @@ public class Bullet : MonoBehaviour
         
         while (true)
         {
-            //acceleration *= 1.1f;
             Vector3 targetDir = point2.position - transform.position;
             targetDir.Normalize();
 
@@ -36,7 +35,6 @@ public class Bullet : MonoBehaviour
 
             float t = 0.1f;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), t);
-            //transform.rotation = Quaternion.LookRotation(dir);
             yield return new WaitForSeconds(duration);
             duration *= 0.5f;
         }
@@ -49,7 +47,12 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //acceleration *= 1.1f;
+        if (other.GetComponent<Enemy>())
+        {
+            var enemy = other.GetComponent<Enemy>();
+            enemy.TakeDamage(1f);
+        }
+        
         StartCoroutine(accelcor());
         //Destroy(gameObject);
     }
