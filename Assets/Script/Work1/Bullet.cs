@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     public Transform point1;
     public Transform point2;
 
-    private float speed = 30f;
+    private float speed = 45f;
     private float acceleration = 1f;
     private void Start()
     {
